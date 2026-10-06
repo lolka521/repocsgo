@@ -1,0 +1,26 @@
+name: Build and Release Mod
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create Melty Distribution Package
+        run: |
+          mkdir -p build/BepInEx/plugins
+          cp melty.json build/
+          cp BepInEx/plugins/CS2WeaponsMod.cs build/BepInEx/plugins/
+          cd build && zip -r ../repocsgo-mod.zip ./*
+
+      - name: Upload Artifact to Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: repocsgo-mod.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
