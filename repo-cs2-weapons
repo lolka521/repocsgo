@@ -1,1 +1,12 @@
-
+{
+  "id": "repocsgo",
+  "title": "CS2 Weapons & Buy Menu",
+  "gameId": "repo",
+  "loader": "bepinex-5",
+  "version": "0.1.0",
+  "say": [
+    "Круговое меню закупки по кнопке B",
+    "Бесплатные AK-47, Deagle и граната HE",
+    "Режим работы: Хост / Соло"
+  ]
+}
